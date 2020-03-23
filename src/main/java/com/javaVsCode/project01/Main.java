@@ -23,12 +23,14 @@ public class Main {
         //Imperative Approach
         List<Person> females = new ArrayList<>();
 
+        // Selecting "FEMALES", and adding
         for (Person person:people){
             if(FEMALE.equals(person.gender)){
                 females.add(person);
             }
         }
 
+        // Displaying FEMALE records
         for (Person female:females){
             System.out.println( female );
         }        
