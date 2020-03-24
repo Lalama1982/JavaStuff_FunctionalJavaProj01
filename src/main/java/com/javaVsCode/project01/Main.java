@@ -36,7 +36,7 @@ public class Main {
             System.out.println( female );
         }        
 
-        System.out.println("\n>> Declarative Approach");
+        System.out.println("\n>> Declarative Approach ");
         System.out.println("    >>  Option:1");    
         people.stream()
             .filter(person -> FEMALE.equals(person.gender)) // "Lambada" notations
