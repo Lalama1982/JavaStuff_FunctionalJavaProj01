@@ -2,6 +2,7 @@ package com.javaVsCode.project01;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -44,8 +45,9 @@ public class Main {
             .forEach(System.out::println);
 
         System.out.println("\n    >>  Option:2");    
+        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
         List<Person> females2 = people.stream()
-            .filter(person -> FEMALE.equals(person.gender))   
+            .filter(personPredicate) //OR USED AS THIS "a Predicate">> .filter(person -> FEMALE.equals(person.gender))   
             .collect(Collectors.toList());
             females2.forEach(System.out::println);
 
