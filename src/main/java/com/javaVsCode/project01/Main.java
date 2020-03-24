@@ -2,6 +2,7 @@ package com.javaVsCode.project01;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -20,7 +21,7 @@ public class Main {
         people.add(new Person("Alex",MALE));
         people.add(new Person("Alice",FEMALE));
 
-        //Imperative Approach
+        System.out.println("\n>> Imperative Approach");
         List<Person> females = new ArrayList<>();
 
         // Selecting "FEMALES", and adding
@@ -34,6 +35,20 @@ public class Main {
         for (Person female:females){
             System.out.println( female );
         }        
+
+        System.out.println("\n>> Declarative Approach");
+        System.out.println("    >>  Option:1");    
+        people.stream()
+            .filter(person -> FEMALE.equals(person.gender)) // "Lambada" notations
+            .collect(Collectors.toList())
+            .forEach(System.out::println);
+
+        System.out.println("\n    >>  Option:2");    
+        List<Person> females2 = people.stream()
+            .filter(person -> FEMALE.equals(person.gender))   
+            .collect(Collectors.toList());
+            females2.forEach(System.out::println);
+
     }
 
     static class Person {
