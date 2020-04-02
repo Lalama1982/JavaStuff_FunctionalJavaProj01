@@ -1,6 +1,6 @@
 package functionalinterface;
 
-import java.util.function.BiPredicate;
+//import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class _Predicate {
