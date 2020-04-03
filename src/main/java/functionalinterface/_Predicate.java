@@ -14,7 +14,7 @@ public class _Predicate {
         System.out.println(
                 "[NORMAL JAVA]:: Phone#: " + invalidPhoneNumber + " Status: " + isPhoneNumberValid(invalidPhoneNumber));
 
-        // Using PREDICATE Ffunctionality
+        // Using PREDICATE functionality
         System.out.println("[PREDICATE FUNC]:: Phone#: " + validPhoneNumber + " Status: "
                 + isPhoneNumberValidPredicate.test(validPhoneNumber));
         System.out.println("[PREDICATE FUNC]:: Phone#: " + invalidPhoneNumber + " Status: "
