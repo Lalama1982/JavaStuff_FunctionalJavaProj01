@@ -60,11 +60,11 @@ public class _Stream {
         System.out.println("\n>> \"Stream-allMatch[02-with seperate Person Predicate] :: containsOnlyFemales = " + containsOnlyFemales);
 
         boolean containsAnyFemales = people.stream().anyMatch(personPredicate);
-        System.out.println("\n>> \"Stream-anyMatch[02-with seperate Person Predicate] :: containsAnyFemales = " + containsAnyFemales);
+        System.out.println("\n>> \"Stream-anyMatch[02-with seperate Person Predicate] <<:: containsAnyFemales = " + containsAnyFemales);
 
         personPredicate = person -> OOPS.equals(person.gender);
         boolean containsNoneOops = people.stream().noneMatch(personPredicate);
-        System.out.println("\n>> \"Stream-noneMatch[02-with seperate Person Predicate] :: containsNoneOops = " + containsNoneOops);
+        System.out.println("\n>> \"Stream-noneMatch[02-with seperate Person Predicate] <<:: containsNoneOops = " + containsNoneOops);
 
     }
 
