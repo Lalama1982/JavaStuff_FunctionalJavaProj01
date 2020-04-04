@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,7 @@ public class _Stream {
     public static void main(String[] args) {
         Gender MALE = Gender.MALE;
         Gender FEMALE = Gender.FEMALE;
+        Gender OOPS = Gender.OOPS;
         List<Person> people = new ArrayList<Person>();
         people.add(new Person("John", MALE));
         people.add(new Person("Maria", FEMALE));
@@ -20,13 +22,15 @@ public class _Stream {
         people.add(new Person("Alice", FEMALE));
 
         // Map gender of each "person" object to a collection & display (unique set)
-        System.out.println(">> \"Stream\" :: Map gender of each \"person\" object to a collection & display (unique set) <<");
+        System.out.println(
+                ">> \"Stream\" :: Map gender of each \"person\" object to a collection & display (unique set) <<");
         people.stream().map(person -> person.gender).collect(Collectors.toSet())
                 .forEach(gender -> System.out.println("Unique Genders: " + gender));
         // Output:: MALE, FEMALE
 
         // Map gender of each "person" object to a collection & display (unique set)
-        System.out.println("\n>> \"Stream\" :: Map gender of each \"person\" object to a collection & display (unique set) <<");
+        System.out.println(
+                "\n>> \"Stream\" :: Map gender of each \"person\" object to a collection & display (unique set) <<");
         people.stream().map(person -> person.name).collect(Collectors.toSet())
                 .forEach(name -> System.out.println("Unique Names: " + name));
         // Output:: All the unique names
@@ -38,15 +42,29 @@ public class _Stream {
                 // .mapToInt(String::length)
                 .forEach(person -> System.out.println("Name: " + person.name + "  Length: " + person.name.length()));
 
-        System.out.println("\n>> \"Stream\" :: mapToInt(length of the Name)<<");                
+        System.out.println("\n>> \"Stream\" :: mapToInt(length of the Name)<<");
         people.stream().map(person -> person.name).mapToInt(String::length)
                 .forEach(length -> System.out.println("Length of Each Name: " + length));
 
-        System.out.println("\n>> \"Stream\" :: mapToInt(length of the Name); step breakdown<<");                                
+        System.out.println("\n>> \"Stream\" :: mapToInt(length of the Name); step breakdown<<");
         Function<Person, String> personStringFunction = person -> person.name;
         ToIntFunction<String> length = String::length; // converts length of each name (an int) to string
         IntConsumer println = x -> System.out.println(x); // OR System.out::println; print an int
         people.stream().map(personStringFunction).mapToInt(length).forEach(println);
+
+        boolean containsOnlyFemales = people.stream().allMatch(person -> FEMALE.equals(person.gender));
+        System.out.println("\n>> \"Stream-allMatch[01] :: containsOnlyFemales = " + containsOnlyFemales);
+
+        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+        containsOnlyFemales = people.stream().allMatch(personPredicate);
+        System.out.println("\n>> \"Stream-allMatch[02-with seperate Person Predicate] :: containsOnlyFemales = " + containsOnlyFemales);
+
+        boolean containsAnyFemales = people.stream().anyMatch(personPredicate);
+        System.out.println("\n>> \"Stream-anyMatch[02-with seperate Person Predicate] :: containsAnyFemales = " + containsAnyFemales);
+
+        personPredicate = person -> OOPS.equals(person.gender);
+        boolean containsNoneOops = people.stream().noneMatch(personPredicate);
+        System.out.println("\n>> \"Stream-noneMatch[02-with seperate Person Predicate] :: containsNoneOops = " + containsNoneOops);
 
     }
 
@@ -65,6 +83,6 @@ public class _Stream {
     }
 
     enum Gender {
-        MALE, FEMALE
+        MALE, FEMALE, OOPS
     }
 }
