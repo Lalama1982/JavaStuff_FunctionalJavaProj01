@@ -16,7 +16,7 @@ public class Main {
                 () -> new IllegalStateException("\n>> \"Optional\"-ofNullable/orElseThrow << Exception... \n"));
         // System.out.println(">> \"Optional\"-ofNullable/orElseThrow << " + value);
 
-        // "Optional", "ifPresentOrElse" based on nullity of variable "strValue"
+        // "Optional", "ifPresentOrElse" based on nullity of variable "intValue"
         /*
         Integer intValue = 343;
         Optional.ofNullable(intValue)
@@ -31,7 +31,8 @@ public class Main {
             System.out.println("Value is empty");
         });
         */
-        
+
+        // "Optional", :: "ifPresent" based on variable "opIntg"
         // Optional<Integer> opIntg = Optional.empty();
         Optional<Integer> opIntg = Optional.of(1234);
         opIntg.ifPresent(value2 -> {
