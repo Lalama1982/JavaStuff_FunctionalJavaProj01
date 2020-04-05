@@ -5,6 +5,9 @@ import java.util.function.Function;
 
 public class Lambdas {
     public static void main(String[] args) {
+
+        
+
         Function<String, String> upperCaseNameFunc = name -> name.toUpperCase(); 
         // Function<String, String> upperCaseName02 = name -> String::toUpperCase;
 
