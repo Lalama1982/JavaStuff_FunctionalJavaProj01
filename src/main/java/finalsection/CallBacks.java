@@ -2,7 +2,7 @@ package finalsection;
 
 import java.util.function.Consumer;
 
-public class Main {
+public class CallBacks {
     public static void main(String[] args) {
         System.out.println("[callBackConsumer] :: Test Case#1");
         callBackConsumer("John", "Montana", value -> {
