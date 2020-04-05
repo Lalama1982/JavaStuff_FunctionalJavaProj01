@@ -1,0 +1,6 @@
+1) No state
+2) Pure Functions
+3) No-side effects
+4) Higher Order Functions
+    4.1) A Function takes one or more functions as parameters
+    4.2) A Function returns another function as a result
